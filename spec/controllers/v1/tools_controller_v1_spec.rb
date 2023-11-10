@@ -28,4 +28,13 @@ RSpec.describe Api::V1::ToolsController, type: :controller do
     end
   end
 
+  describe "PATCH /api/v1/tools/id" do
+    it "Consegue atualizar uma tool e retornar status 200?" do
+      tool = Tool.last
+      patch :update, params: {tool: {name: "estação", description: "ferramenta de soldagem"}, id: tool.id}
+      expect(response.body).to include_json(name: "estação")
+      expect(response).to have_http_status(200)
+    end
+  end
+
 end
