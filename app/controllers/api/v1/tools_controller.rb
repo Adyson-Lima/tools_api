@@ -1,6 +1,6 @@
 class Api::V1::ToolsController < ApplicationController
 
-  before_action :set_tool, only: %i[show] # show update destroy
+  before_action :set_tool, only: %i[show update] # show update destroy
 
   def index
     @tools = Tool.all
@@ -15,6 +15,14 @@ class Api::V1::ToolsController < ApplicationController
     @tool = Tool.new(tool_params)
     if @tool.save
       render json: @tool, status: :created, location: api_v1_tool_url(@tool)
+    else
+      render json: @tool.erros, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @tool.update(tool_params)
+      render json: @tool
     else
       render json: @tool.erros, status: :unprocessable_entity
     end
