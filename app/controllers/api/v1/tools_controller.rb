@@ -11,6 +11,15 @@ class Api::V1::ToolsController < ApplicationController
     render json: @tool
   end
 
+  def create
+    @tool = Tool.new(tool_params)
+    if @tool.save
+      render json: @tool, status: :created, location: api_v1_tool_url(@tool)
+    else
+      render json: @tool.erros, status: :unprocessable_entity
+    end
+  end
+
 private
 
 def set_tool
