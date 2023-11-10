@@ -20,4 +20,12 @@ RSpec.describe Api::V1::ToolsController, type: :controller do
     end
   end
 
+  describe "POST /api/v1/tools" do
+    it "Consegue criar uma tool e retornar status 201?" do
+      post :create, params: {tool: {name: "escova", description: " ferramenta de limpeza"}, format: :json}
+      expect(response.body).to include_json(name: "escova")
+      expect(response).to have_http_status(201)
+    end
+  end
+
 end
