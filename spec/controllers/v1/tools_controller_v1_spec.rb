@@ -37,4 +37,13 @@ RSpec.describe Api::V1::ToolsController, type: :controller do
     end
   end
 
+  describe "DELETE /api/v1/tools/id" do
+    it "Consegue excluir uma tool e retornar status 204?" do
+      tool = Tool.last
+      delete :destroy, params: {id: tool.id}
+      expect(Tool.all).not_to include(tool)
+      expect(response).to have_http_status(204)
+    end
+  end
+
 end
