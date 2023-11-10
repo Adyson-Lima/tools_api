@@ -11,6 +11,11 @@ RSpec.describe Tool, type: :model do
       expect(@tool.name).to eq("multimetro")
     end
 
+    it "description consegue ser preenchido?" do
+      @tool.description = ""
+      expect(@tool.description).to eq("ferramenta de medição")
+    end
+
   end
 
 end
