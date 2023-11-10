@@ -7,7 +7,7 @@ RSpec.describe Tool, type: :model do
   describe "Teste de preenchimento dos campos do model Tool" do
 
     it "name consegue ser preenchido?" do
-      @tool.name = ""
+      @tool.name = "multimetro"
       expect(@tool.name).to eq("multimetro")
     end
 
