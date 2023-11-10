@@ -25,6 +25,12 @@ RSpec.describe Tool, type: :model do
       @tool.description = "ferramenta de manutenção"
       expect(@tool).to be_valid
     end
+
+    it "Tool invalida com campos obrigatorios não preenchidos?" do
+      tool = Tool.new
+      expect(tool).to be_valid
+    end
+
   end
 
 end
