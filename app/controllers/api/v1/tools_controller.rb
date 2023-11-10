@@ -1,10 +1,14 @@
 class Api::V1::ToolsController < ApplicationController
 
-  #before_action :set_tool, only: %i [] # show update destroy
+  before_action :set_tool, only: %i[show] # show update destroy
 
   def index
     @tools = Tool.all
     render json: @tools
+  end
+
+  def show
+    render json: @tool
   end
 
 private
