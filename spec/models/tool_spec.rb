@@ -18,4 +18,13 @@ RSpec.describe Tool, type: :model do
 
   end
 
+  describe "Testes de validação do model Tool" do
+
+    it "Tool valida com campos obrigatorios preenchidos?" do
+      @tool.name = ""
+      @tool.description = ""
+      expect(@tool).to be_valid
+    end
+  end
+
 end
