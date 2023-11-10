@@ -1,6 +1,6 @@
 class Api::V1::ToolsController < ApplicationController
 
-  before_action :set_tool, only: %i[show update] # show update destroy
+  before_action :set_tool, only: %i[show update destroy] # show update destroy
 
   def index
     @tools = Tool.all
@@ -26,6 +26,10 @@ class Api::V1::ToolsController < ApplicationController
     else
       render json: @tool.erros, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @tool.destroy!
   end
 
 private
