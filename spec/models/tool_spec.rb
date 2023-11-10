@@ -12,7 +12,7 @@ RSpec.describe Tool, type: :model do
     end
 
     it "description consegue ser preenchido?" do
-      @tool.description = ""
+      @tool.description = "ferramenta de medição"
       expect(@tool.description).to eq("ferramenta de medição")
     end
 
